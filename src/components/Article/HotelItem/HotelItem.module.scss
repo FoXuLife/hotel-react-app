@@ -1,0 +1,64 @@
+@use './../../../variables/variables.scss';
+
+.hotelItem {
+    border-bottom: 1px solid rgba(135, 135, 135, 0.2);
+    margin-top: 15px;
+    padding-bottom: 15px;
+    max-width: 100%;
+
+    .nameHotel {
+        display: flex;
+        justify-content: space-between;
+        font-size: 17px;
+
+        svg {
+            font-size: 21px;
+        }
+
+        .active {
+            color: #E55858;
+        }
+    }
+
+    .dataTime {
+        display: flex;
+        gap: 14px;
+
+        justify-items: space-between;
+        font-size: 14px;
+        color: #878787;
+    }
+
+    .ratingPrice {
+        display: flex;
+        margin-top: 10px;
+        gap: 14px;
+        justify-content: space-between;
+        align-items: center;
+
+        .rating {
+            height: 19px;
+
+            .activeStar {
+                color: #CDBC1E;
+            }
+
+            svg {
+                font-size: 19px;
+            }
+        }
+
+
+
+        p {
+            font-size: 11px;
+            color: #878787;
+
+            span {
+                margin-left: 8px;
+                font-size: 17px;
+                color: #424242;
+            }
+        }
+    }
+}

@@ -1,0 +1,21 @@
+@use './../../../variables/variables.scss';
+
+.filterFind {
+
+    grid-area: dataPicker;
+    @include variables.main_block_style;
+
+
+    form {
+        display: grid;
+        gap: 20px;
+
+        .dataField {
+            @include variables.main_field;
+        }
+
+        button {
+            @include variables.main_button_style
+        }
+    }
+}

@@ -1,0 +1,20 @@
+@use './../../variables/variables.scss';
+body{
+    background-color: #F4F4F4;
+    
+}
+article {
+    padding: 32px;
+    display: grid;
+    grid-template-areas: 'header header'
+        'dataPicker checkHotel'
+        'favourites checkHotel';
+    padding: 0 200px;
+    grid-template-columns: max-content auto;
+    grid-template-rows: max-content max-content;
+    gap: 24px;
+    height: 100%;
+}
+.article{
+    height: 100%;
+}

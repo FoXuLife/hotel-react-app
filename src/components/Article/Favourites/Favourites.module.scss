@@ -1,0 +1,52 @@
+@use './../../../variables/variables.scss';
+
+.favourites {
+    display:grid;
+    gap: 32px;
+    grid-area: favourites;
+    @include variables.main_block_style;
+    overflow: hidden;
+    height: 90%;
+    h1 {
+
+        font-size: 24px;
+    }
+
+    .favouritesFilter {
+        display: flex;
+        gap:8px;
+        .filterField {
+            display: grid;
+            grid-template-columns: max-content max-content;
+            align-items: center;
+            border-radius: 4px;
+            margin: 7px 0 0 0;
+            color: #99A0A3;
+            border: 1px solid #E5E5E5;
+            padding: 4px 8px;
+            gap:10px;
+            .filterSelector {
+                display: grid;
+                grid-template-columns: auto;
+                grid-template-rows: max-content max-content;
+                
+                svg {
+                    height:100%;
+                    padding: 0;
+                }
+            }
+
+        }
+    }
+    .favouritesItems{
+        height: 100%;
+        overflow-y: scroll;
+    }
+    .favouritesItems::-webkit-scrollbar {
+        width: 0;
+    }
+
+    .favouritesItems {
+        -ms-overflow-style: none;
+    }
+}

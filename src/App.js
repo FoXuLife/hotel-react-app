@@ -1,25 +1,12 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
+import { useSelector } from "react-redux"
+import Login from "./components/Login/Login"
+import c from './App.module.scss'
+import Article from "./components/Article/Article"
+const App = () => {
+  //const store = useSelector(store => store)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <div className={c.App}>
+      <Login />
+    </div>)
 }
-
-export default App;
+export default App
