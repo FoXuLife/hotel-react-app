@@ -1,13 +1,13 @@
 import { combineReducers } from "redux";
-const init = {
-    test: 'test'
-}
-const reducer = (state = init, action) => {
-    return state
-}
-
+import { authReducer } from './authReducer';
+import { appReducer } from './appReducer';
+import { hotelReducer } from './hotelReducer';
+import { filterReducer } from './filterReducer';
 const rootReducer = combineReducers({
-    reducer
+    authReducer,
+    appReducer,
+    hotelReducer,
+    filterReducer
 });
 
 export default rootReducer

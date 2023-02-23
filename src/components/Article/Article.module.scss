@@ -1,20 +1,44 @@
 @use './../../variables/variables.scss';
-body{
-    background-color: #F4F4F4;
-    
-}
-article {
-    padding: 32px;
+
+
+.article {
     display: grid;
     grid-template-areas: 'header header'
         'dataPicker checkHotel'
         'favourites checkHotel';
-    padding: 0 200px;
-    grid-template-columns: max-content auto;
+    padding: 0 10%;
+    grid-template-columns: auto auto;
     grid-template-rows: max-content max-content;
     gap: 24px;
-    height: 100%;
+    max-height: 902px;
 }
-.article{
-    height: 100%;
+
+@media (max-width:1024px) {
+    .article {
+        padding: 32px;
+    }
+}
+
+@media (max-width:920px) {
+    .article {
+        grid-template-areas: 'header header'
+            'dataPicker favourites'
+            'checkHotel checkHotel';
+        grid-template-columns: auto auto;
+        grid-template-rows: max-content max-content auto;
+    }
+
+}
+
+@media (max-width:620px) {
+    .article {
+        margin: 30px 0 30px 0   ;
+        grid-template-areas: 'header header'
+            'dataPicker  dataPicker '
+            'favourites favourites'
+            'checkHotel checkHotel';
+        grid-template-columns: auto;
+        grid-template-rows: max-content max-content auto;
+    }
+
 }

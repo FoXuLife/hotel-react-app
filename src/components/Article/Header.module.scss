@@ -1,25 +1,40 @@
 @use './../../variables/variables.scss';
 
 .header {
-    grid-area: header;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-sizing:border-box;
-    padding:0 32px;
-    .exit{
+    box-sizing: border-box;
+    padding: 15px 32px 0 32px;
+    grid-area: header;
+
+    .exit {
         display: flex;
         justify-content: space-around;
         cursor: pointer;
         align-items: center;
         gap: 10px;
     }
-    svg{
+
+    svg {
         font-size: 24px;
     }
+
     h1 {
         font-weight: 500;
         font-size: 24px;
         line-height: 28px;
+    }
+}
+
+@media (max-width:620px) {
+    .header {
+        position: fixed;
+        background-color: white;
+        box-shadow: 0px 1px 40px -9px black;
+        top: 0;
+        left: 0;
+        right: 0;
+        padding: 20px;
     }
 }

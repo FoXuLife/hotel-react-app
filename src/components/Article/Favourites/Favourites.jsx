@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import c from "./Favourites.module.scss";
 import { HiChevronDown, HiChevronUp } from "react-icons/hi";
 import HotelItem from "../HotelItem/HotelItem";
+import { useSelector } from "react-redux";
 const Favourites = () => {
+  const hotelsFavorite = useSelector(
+    (store) => store?.hotelReducer?.hotelsFavorite
+  );
+  useEffect(() => {
+    console.log(hotelsFavorite);
+  }, [hotelsFavorite]);
   return (
     <div className={c.favourites}>
       <h1>Избранное</h1>
@@ -23,9 +30,19 @@ const Favourites = () => {
         </div>
       </div>
       <div className={c.favouritesItems}>
-        <HotelItem />
-        <HotelItem />
-        <HotelItem />
+        {hotelsFavorite.map((e) => {
+          return (
+            <HotelItem
+              name={e.name}
+              id={e.hotelId}
+              stars={e.stars}
+              priceFrom={e.priceFrom}
+              date={e.date}
+              countDays={e.countDays}
+              active={true}
+            />
+          );
+        })}
       </div>
     </div>
   );

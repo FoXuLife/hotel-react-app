@@ -4,16 +4,21 @@ import CheckHotel from "./CheckHotel/CheckHotel";
 import FilterFind from "./FilterFind/FilterFind";
 import Favourites from "./Favourites/Favourites";
 import Header from "./Header";
+import { useSelector } from "react-redux";
+import { Navigate } from "react-router";
 const Article = () => {
-  return (
-    <div className={c.article}>
+  const isAuth = useSelector((store) => store?.authReducer?.isAuth);
+  return !isAuth ? (
+    <Navigate to="/login" />
+  ) : (
+    <>
       <Header />
-      <article>
+      <div className={c.article}>
         <FilterFind />
         <Favourites />
         <CheckHotel />
-      </article>
-    </div>
+      </div>
+    </>
   );
 };
 

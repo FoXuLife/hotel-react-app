@@ -1,11 +1,9 @@
 @use './../../../variables/variables.scss';
 
 .hotelItem {
-    border-bottom: 1px solid rgba(135, 135, 135, 0.2);
     margin-top: 15px;
     padding-bottom: 15px;
     max-width: 100%;
-
     .nameHotel {
         display: flex;
         justify-content: space-between;

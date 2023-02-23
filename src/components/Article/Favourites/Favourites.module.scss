@@ -2,11 +2,12 @@
 
 .favourites {
     display:grid;
+    grid-area:favourites;
     gap: 32px;
-    grid-area: favourites;
     @include variables.main_block_style;
-    overflow: hidden;
-    height: 90%;
+    height: 100%;
+    max-height: 470px;
+
     h1 {
 
         font-size: 24px;
@@ -25,6 +26,8 @@
             border: 1px solid #E5E5E5;
             padding: 4px 8px;
             gap:10px;
+            
+
             .filterSelector {
                 display: grid;
                 grid-template-columns: auto;
@@ -39,8 +42,14 @@
         }
     }
     .favouritesItems{
-        height: 100%;
+        min-height: 260px;
         overflow-y: scroll;
+        >div{
+            border-bottom: 1px solid rgba(135, 135, 135, 0.2);
+        }
+        :last-child{
+            border: none;
+        }
     }
     .favouritesItems::-webkit-scrollbar {
         width: 0;
