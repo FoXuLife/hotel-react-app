@@ -1,10 +1,12 @@
 @mixin main_field {
     display: block;
+
     label {
         font-weight: 500;
-       
+
         color: #424242;
     }
+
     input {
         font-size: 16px;
         width: 100%;
@@ -13,7 +15,7 @@
         border: 1px solid #C9CACC;
         height: 50px;
         padding: 15px;
-        box-sizing:border-box;
+        box-sizing: border-box;
     }
 }
 
@@ -42,5 +44,21 @@
     &:active {
         cursor: pointer;
         background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), linear-gradient(104.34deg, #41522E -15.34%, #BE8022 145.95%);
+    }
+}
+
+@mixin errors {
+    label {
+        color: #df3939
+    }
+
+    p {
+        margin: 10px 0 0 0;
+        font-size: 12px;
+        color: #df3939
+    }
+
+    input {
+        border: 1px solid #df3939;
     }
 }

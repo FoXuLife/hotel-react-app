@@ -1,5 +1,5 @@
 export const SET_FILTER_PARAMS = 'filter/SET-FILTER-ELEMENTS';
-
+export const GET_FILTER_PARAMS = 'filter/GET-FILTER-PARAMS';
 
 
 const init = {
@@ -20,4 +20,6 @@ export const filterReducer = (state = init, action) => {
 export const setFilterParams = (location, date, countDays) => {
     return { type: SET_FILTER_PARAMS, location: location, date: date, countDays: countDays }
 }
-
+export const getFilterParams = (location, date, countDays) => {
+    return { type: GET_FILTER_PARAMS, location: location, date: date, countDays: countDays }
+}

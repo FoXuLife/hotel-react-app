@@ -22,7 +22,7 @@
         z-index: 1;
         border-radius: 16px;
         justify-items: center;
-        
+
         h1 {
             text-align: center;
         }
@@ -30,6 +30,10 @@
         .loginField {
             width: 100%;
             @include variables.main_field
+        }
+
+        .errors {
+            @include variables.errors
         }
 
         button {

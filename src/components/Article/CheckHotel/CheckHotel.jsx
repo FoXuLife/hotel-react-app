@@ -47,6 +47,7 @@ const CheckHotel = () => {
                   id={e.hotelId}
                   stars={e.stars}
                   priceFrom={e.priceFrom}
+                  isFavorite={e.isFavorite}
                   countDays={datesOfStay.countDays}
                   date={today}
                 />

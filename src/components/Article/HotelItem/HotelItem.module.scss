@@ -4,6 +4,7 @@
     margin-top: 15px;
     padding-bottom: 15px;
     max-width: 100%;
+
     .nameHotel {
         display: flex;
         justify-content: space-between;
@@ -11,6 +12,10 @@
 
         svg {
             font-size: 21px;
+        }
+
+        svg:hover {
+            color: #EBEBEB;
         }
 
         .active {
@@ -36,10 +41,6 @@
 
         .rating {
             height: 19px;
-
-            .activeStar {
-                color: #CDBC1E;
-            }
 
             svg {
                 font-size: 19px;

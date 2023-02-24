@@ -1,8 +1,9 @@
 import React from "react";
 import c from "./HotelItem.module.scss";
-import { AiFillHeart, AiFillStar } from "react-icons/ai";
+import { AiFillHeart } from "react-icons/ai";
 import { useDispatch } from "react-redux";
 import { followHotel } from "redux/reducers/hotelReducer";
+import { getStarts } from "helpers/getStars";
 
 const HotelItem = ({
   name,
@@ -11,15 +12,10 @@ const HotelItem = ({
   priceFrom,
   date,
   countDays,
-  active = false,
+  isFavorite,
 }) => {
   const dispatch = useDispatch();
-  const star = [];
-  for (let i = 0; i < 5; i++) {
-    stars > i
-      ? star.push(<AiFillStar className={c.activeStar} key={i} />)
-      : star.push(<AiFillStar key={i} />);
-  }
+
   function createLabel(number, titles) {
     const cases = [2, 0, 1, 1, 1, 2];
     return `${
@@ -30,13 +26,12 @@ const HotelItem = ({
       ]
     }`;
   }
-
   return (
     <div className={c.hotelItem}>
       <div className={c.nameHotel}>
         <p>{name ? name : "Name"}</p>
         <AiFillHeart
-          className={active ? c.active : ""}
+          className={isFavorite ? c.active : ""}
           onClick={() => {
             dispatch(followHotel(id, name, stars, priceFrom, date, countDays));
           }}
@@ -49,7 +44,7 @@ const HotelItem = ({
         </p>
       </div>
       <div className={c.ratingPrice}>
-        <div className={c.rating}>{star.map((e) => e)}</div>
+        <div className={c.rating}>{getStarts(stars)}</div>
         <p>
           Price:<span>{priceFrom} ₽</span>
         </p>

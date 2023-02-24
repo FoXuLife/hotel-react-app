@@ -10,12 +10,17 @@
         display: grid;
         gap: 20px;
 
+        
+
         .dataField {
             @include variables.main_field;
         }
 
         button {
             @include variables.main_button_style
+        }
+        .errors {
+            @include variables.errors
         }
     }
 }
