@@ -5,6 +5,7 @@ import { useHorizontalScroll } from "./UseHorisontalScroll";
 import HotelItem from "../HotelItem/HotelItem";
 import { IoIosHome } from "react-icons/io";
 import { useSelector } from "react-redux";
+import { declination } from "helpers/declination";
 
 const CheckHotel = () => {
   const scrollRef = useHorizontalScroll();
@@ -35,7 +36,11 @@ const CheckHotel = () => {
       </div>
       <div className={c.mainContainer}>
         <p>
-          Добавлено в Избранное:<span>3</span> отеля
+          Добавлено в Избранное:
+          <span>{` ${hotelReducer.hotelsFavorite.length} ${declination(
+            hotelReducer.hotelsFavorite.length,
+            ["отель", "отеля", "отелей"]
+          )}`}</span>
         </p>
         <div className={c.hotelItems}>
           {hotelReducer.hotels.map((e) => {

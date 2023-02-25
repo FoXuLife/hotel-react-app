@@ -6,9 +6,11 @@
     max-width: 100%;
 
     .nameHotel {
-        display: flex;
+        display: grid;
         justify-content: space-between;
         font-size: 17px;
+        grid-template-columns: auto auto;
+        width: 100%;
 
         svg {
             font-size: 21px;

@@ -1,5 +1,13 @@
-import { sortHotelHelper } from "helpers/sortHotelsHelper";
+import img1 from 'assets/img/image_part_001.jpg'
+import img2 from 'assets/img/image_part_002.jpg'
+import img3 from 'assets/img/image_part_003.jpg'
+import img4 from 'assets/img/image_part_004.jpg'
+import img5 from 'assets/img/image_part_005.jpg'
+import img6 from 'assets/img/image_part_006.jpg'
+import img7 from 'assets/img/image_part_007.jpg'
+import img8 from 'assets/img/image_part_008.jpg'
 
+import { sortHotelHelper } from "helpers/sortHotelsHelper";
 export const GET_HOTELS = 'hotel/GET-HOTELS';
 const SET_HOTELS = 'hotel/SET-HOTELS';
 const FOLLOW_HOTELS = 'hotel/FOLLOW-HOTELS';
@@ -10,35 +18,35 @@ const init = {
     images: [
         {
             id: 1,
-            src: '/static/media/image_part_001.288d59e5ab9134dba469.jpg'
+            src: img1
         },
         {
             id: 2,
-            src: '/static/media/image_part_002.b4cc370d18424df4f7ca.jpg'
+            src: img2
         },
         {
             id: 3,
-            src: '/static/media/image_part_003.dbf281736c843c19d7c5.jpg'
+            src: img3
         },
         {
             id: 4,
-            src: '/static/media/image_part_004.d9eb3458ac24b38bbb39.jpg'
+            src: img4
         },
         {
             id: 5,
-            src: '/static/media/image_part_005.5a45ffaa8df866b68ad0.jpg'
+            src: img5
         },
         {
             id: 6,
-            src: '/static/media/image_part_005.5a45ffaa8df866b68ad0.jpg'
+            src: img6
         },
         {
             id: 7,
-            src: '/static/media/image_part_007.143fbe0640532d07ec62.jpg'
+            src: img7
         },
         {
             id: 8,
-            src: '/static/media/image_part_008.925b395d1e996d338500.jpg'
+            src: img8
         }
 
     ],
@@ -82,7 +90,7 @@ export const hotelReducer = (state = init, action) => {
                 }), errors: null
             }
         case SORT_HOTELS: return {
-            ...state, hotelsFavorite: action.viewSort === 'price' ? sortHotelHelper(state.hotelsFavorite, 'priceFrom') : sortHotelHelper(state.hotelsFavorite, 'stars')
+            ...state, hotelsFavorite: action.viewSort === 'priceFilter' ? sortHotelHelper(state.hotelsFavorite, 'priceFrom', action.number) : sortHotelHelper(state.hotelsFavorite, 'stars', action.number)
         }
         case GET_HOTELS_FAILED:
             return { ...state, errors: action.errors }
@@ -98,8 +106,8 @@ export const getHotel = (location, date, countDays) => { // Для саги
 export const getHotelFailed = (payload) => {
     return { type: GET_HOTELS_FAILED, errors: payload }
 }
-export const sortHotel = (viewSort) => {
-    return { type: SORT_HOTELS, viewSort }
+export const sortHotel = (viewSort, number) => {
+    return { type: SORT_HOTELS, viewSort, number }
 }
 export const setHotel = (hotels) => { // Для записи в int
     return { type: SET_HOTELS, hotels: hotels }

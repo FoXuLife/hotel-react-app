@@ -1,6 +1,8 @@
 import axios from "axios";
 import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "firebase/auth";
 
+
+//Auth
 export const LoginingAPI = async (login, password) => {
     const auth = getAuth()
     try {
@@ -9,8 +11,6 @@ export const LoginingAPI = async (login, password) => {
     } catch (error) {
         return error.code
     }
-
-    //return data
 }
 export const AuthAPI = async () => {
     const auth = getAuth()
@@ -25,9 +25,10 @@ export const AuthAPI = async () => {
 export const LogoutAPI = async () => {
     const auth = getAuth()
     await signOut(auth)
-
 }
 
+
+//Hotel
 export const getHotelsAPI = async (location, date, countDays) => {
     const msDate = Date.now(date)
     const dateEntry = new Date(msDate).toISOString().slice(0, 10)

@@ -7,6 +7,7 @@
     @include variables.main_block_style;
     height: 100%;
     max-height: 470px;
+    max-width: 356px;
 
     h1 {
 
@@ -27,7 +28,7 @@
             border: 1px solid #E5E5E5;
             padding: 4px 8px;
             gap: 10px;
-
+            cursor: pointer;
 
             .filterSelector {
                 display: grid;
@@ -41,6 +42,31 @@
             }
 
         }
+
+        .active {
+            border-color: #41522E;
+
+            p {
+                color: #41522E;
+            }
+        }
+
+        .decActive {
+            .filterSelector {
+                svg:nth-child(2) {
+                    color: #41522E;
+                }
+            }
+        }
+
+        .incActive {
+            .filterSelector {
+                svg:nth-child(1) {
+                    color: #41522E;
+                }
+            }
+        }
+
     }
 
     .favouritesItems {
@@ -75,4 +101,11 @@
     .favouritesItems {
         -ms-overflow-style: none;
     }
+}
+
+@media (max-width:920px) {
+    .favourites {
+        max-width: 700px;
+    }
+
 }
