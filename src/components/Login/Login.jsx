@@ -45,12 +45,12 @@ const Login = () => {
         </div>
         <div
           className={`${c.loginField} ${
-            (errors.login || serverErrors) && c.errors
+            (errors.password || serverErrors) && c.errors
           }`}
         >
           <label>Пароль</label>
           <input
-            type="text"
+            type="password"
             {...register("password", {
               required: "Поле пароля обязательно для заполнения",
               minLength: {

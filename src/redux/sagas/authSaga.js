@@ -1,6 +1,7 @@
 
 import { } from 'redux-saga';
 import { takeEvery, put, call } from 'redux-saga/effects'
+import { clearFollowHotels } from 'redux/reducers/hotelReducer';
 import { AuthAPI, LoginingAPI, LogoutAPI } from '../../api';
 import { loginSucces, LOGIN_REQUEST, AUTH, LOGOUT_REQUEST, logoutSucces, loginFailed } from "../reducers/authReducer";
 
@@ -27,6 +28,7 @@ function* loginRequestWorker({ login, password, navigate }) {
 function* logoutRequestWorker() {
     yield call(LogoutAPI)
     yield put(logoutSucces())
+    yield put(clearFollowHotels())
 }
 
 export function* loginRequestWatcher() {

@@ -33,7 +33,7 @@ export const getHotelsAPI = async (location, date, countDays) => {
     const msDate = Date.now(date)
     const dateEntry = new Date(msDate).toISOString().slice(0, 10)
     const dateCheckOut = new Date(+msDate + (+countDays * 86400000)).toISOString().slice(0, 10)
-    const url = `http://engine.hotellook.com/api/v2/cache.json?location=${location}&currency=rub&checkIn=${dateEntry}&checkOut=${dateCheckOut}&limit=10`
+    const url = `https://engine.hotellook.com/api/v2/cache.json?location=${location}&currency=rub&checkIn=${dateEntry}&checkOut=${dateCheckOut}&limit=10`
     try {
         return await axios.get(url)
     } catch (error) {

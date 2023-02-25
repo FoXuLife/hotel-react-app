@@ -1,34 +1,46 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import c from "./Favourites.module.scss";
 import { HiChevronDown, HiChevronUp } from "react-icons/hi";
 import HotelItem from "../HotelItem/HotelItem";
 import { useDispatch, useSelector } from "react-redux";
 import { sortHotel } from "redux/reducers/hotelReducer";
 const Favourites = () => {
-  const [ratinFilter, setRatinFilter] = useState(0);
-  const [priceFilter, setPriceFilter] = useState(0);
+  const [filterState, setfilterStateFilter] = useState();
+  const [viewFilters, setViewFilters] = useState();
   const hotelsFavorite = useSelector(
     (store) => store?.hotelReducer?.hotelsFavorite
   );
-  const filterHotel = (viewFilter, filterState, setFilter) => {
-    filterState >= 1
-      ? setFilter(-1)
-      : filterState <= -1
-      ? setFilter(0)
-      : setFilter(1);
-    dispatch(sortHotel(viewFilter, filterState));
-  };
   const dispatch = useDispatch();
+  const filterHotel = (viewFilter) => {
+    if (viewFilter === viewFilters) {
+      filterState >= 1
+        ? setfilterStateFilter(-1)
+        : filterState <= -1
+        ? setfilterStateFilter(0)
+        : setfilterStateFilter(1);
+    } else {
+      1 && setViewFilters(viewFilter);
+      1 && setfilterStateFilter(1);
+    }
+  };
+  useEffect(() => {
+    dispatch(sortHotel(viewFilters, filterState));
+  }, [dispatch, viewFilters, filterState]);
+
   return (
     <div className={c.favourites}>
       <h1>Избранное</h1>
       <div className={c.favouritesFilter}>
         <div
-          className={`${c.filterField} ${ratinFilter !== 0 && c.active} ${
-            ratinFilter === -1 && c.decActive
-          }  ${ratinFilter === 1 && c.incActive}`}
+          className={`${c.filterField} ${
+            filterState !== 0 && viewFilters === "ratinFilter" && c.active
+          } ${
+            filterState === -1 && viewFilters === "ratinFilter" && c.decActive
+          }  ${
+            filterState === 1 && viewFilters === "ratinFilter" && c.incActive
+          }`}
           onClick={() => {
-            filterHotel("ratinFilter", ratinFilter, setRatinFilter);
+            filterHotel("ratinFilter");
           }}
         >
           <p>Рейтинг</p>
@@ -38,11 +50,15 @@ const Favourites = () => {
           </div>
         </div>
         <div
-          className={`${c.filterField} ${priceFilter !== 0 && c.active} ${
-            priceFilter === -1 && c.decActive
-          }  ${priceFilter === 1 && c.incActive}`}
+          className={`${c.filterField} ${
+            filterState !== 0 && viewFilters === "priceFilter" && c.active
+          } ${
+            filterState === -1 && viewFilters === "priceFilter" && c.decActive
+          }  ${
+            filterState === 1 && viewFilters === "priceFilter" && c.incActive
+          }`}
           onClick={() => {
-            filterHotel("priceFilter", priceFilter, setPriceFilter);
+            filterHotel("priceFilter");
           }}
         >
           <p>Цена</p>

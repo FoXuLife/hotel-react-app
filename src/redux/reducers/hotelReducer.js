@@ -13,6 +13,7 @@ const SET_HOTELS = 'hotel/SET-HOTELS';
 const FOLLOW_HOTELS = 'hotel/FOLLOW-HOTELS';
 const GET_HOTELS_FAILED = 'hotel/GET_HOTELS-FAILED';
 const SORT_HOTELS = 'hotel/SORT-HOTELS'
+const CLEAR_FOLLOW_HOTELS = 'hotel/CLEAR-FOLLOW-HOTELS'
 
 const init = {
     images: [
@@ -94,6 +95,9 @@ export const hotelReducer = (state = init, action) => {
         }
         case GET_HOTELS_FAILED:
             return { ...state, errors: action.errors }
+        case CLEAR_FOLLOW_HOTELS:
+            return { ...state, hotelsFavorite: [] }
+
         default:
             return state
     }
@@ -107,6 +111,7 @@ export const getHotelFailed = (payload) => {
     return { type: GET_HOTELS_FAILED, errors: payload }
 }
 export const sortHotel = (viewSort, number) => {
+    console.log(viewSort, number);
     return { type: SORT_HOTELS, viewSort, number }
 }
 export const setHotel = (hotels) => { // Для записи в int
@@ -115,4 +120,8 @@ export const setHotel = (hotels) => { // Для записи в int
 export const followHotel = (hotelId, name, stars, priceFrom, date, countDays) => {
     return { type: FOLLOW_HOTELS, hotelId, name, stars, priceFrom, date, countDays }
 }
+export const clearFollowHotels = () => {
+    return { type: CLEAR_FOLLOW_HOTELS }
+}
+
 

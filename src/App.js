@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import { useEffect } from "react";
 import { initializeRequre } from "./redux/reducers/appReducer";
+import Preloader from "helpers/Preloader/Preloader";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -30,7 +31,7 @@ const App = () => {
       <div className={c.App}>
         <RouterProvider router={router} />
       </div>
-    ) : 'Loading'
+    ) : <Preloader />
 }
 
 export default App
