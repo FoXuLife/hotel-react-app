@@ -1,2 +1,2 @@
-login: sanua@m.ru
-password : 1234567Nn
+login: testlogin@mail.ru
+password : TestPassword12
