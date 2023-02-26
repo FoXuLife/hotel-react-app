@@ -42,8 +42,7 @@
         overflow-x: auto;
 
         img {
-            min-width: 164px !important;
-            height: 149px;
+            min-width: 164px;
             left: 32px;
             top: 114px;
             box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.15);
@@ -60,10 +59,10 @@
     }
 
     .mainContainer {
-
+        position: relative;
         height: 550px;
 
-        >P {
+        >p {
             margin: 20px 0px;
         }
 
@@ -75,6 +74,7 @@
                 display: grid;
                 grid-template-columns: max-content auto;
                 align-items: center;
+                border-bottom: 1px solid rgba(135, 135, 135, 0.2);
 
                 >svg {
                     font-size: 32px;
@@ -83,6 +83,11 @@
                     background-color: rgba(65, 82, 46, 0.05);
                     margin-right: 24px;
                 }
+            }
+
+
+            :last-child {
+                border: none;
             }
         }
 
@@ -122,14 +127,12 @@
         display: grid !important;
     }
 }
+
 @media (max-width:550px) {
     .item {
         grid-template-columns: auto !important;
-
         >svg {
-            font-size: 15px !important;
-            padding: 10px !important;
-            margin-right: 0;
+            display: none;
         }
     }
 }

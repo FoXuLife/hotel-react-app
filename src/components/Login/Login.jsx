@@ -30,6 +30,7 @@ const Login = () => {
         >
           <label>Логин</label>
           <input
+            aria-label="Логин"
             type="text"
             {...register("login", {
               required: "Поле логина обязательно для заполнения",
@@ -51,6 +52,7 @@ const Login = () => {
           <label>Пароль</label>
           <input
             type="password"
+            aria-label="Пароль"
             {...register("password", {
               required: "Поле пароля обязательно для заполнения",
               minLength: {

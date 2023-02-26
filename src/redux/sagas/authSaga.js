@@ -12,7 +12,6 @@ export function* authWorker() {
 }
 function* loginRequestWorker({ login, password, navigate }) {
     const data = yield LoginingAPI(login, password)
-    console.log(data);
     if (data.user) {
         yield put(loginSucces(data.user.email, data.user.uid, data.user.accessToken, true))
         yield navigate('/')

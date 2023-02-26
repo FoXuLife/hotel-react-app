@@ -6,6 +6,7 @@ import HotelItem from "../HotelItem/HotelItem";
 import { IoIosHome } from "react-icons/io";
 import { useSelector } from "react-redux";
 import { declination } from "helpers/declination";
+import Preloader from "helpers/Preloader/Preloader";
 
 const CheckHotel = () => {
   const scrollRef = useHorizontalScroll();
@@ -31,7 +32,15 @@ const CheckHotel = () => {
       </div>
       <div className={c.slider} id="container" ref={scrollRef}>
         {hotelReducer.images.map((e) => {
-          return <img src={e.src} key={e.id} alt={e.id} />;
+          return (
+            <img
+              src={e.src}
+              key={e.id}
+              alt={e.id}
+              width="164px"
+              height="149px"
+            />
+          );
         })}
       </div>
       <div className={c.mainContainer}>
@@ -43,22 +52,26 @@ const CheckHotel = () => {
           )}`}</span>
         </p>
         <div className={c.hotelItems}>
-          {hotelReducer.hotels.map((e) => {
-            return (
-              <div className={c.item} key={e.hotelId}>
-                <IoIosHome />
-                <HotelItem
-                  name={e.name}
-                  id={e.hotelId}
-                  stars={e.stars}
-                  priceFrom={e.priceFrom}
-                  isFavorite={e.isFavorite}
-                  countDays={datesOfStay.countDays}
-                  date={today}
-                />
-              </div>
-            );
-          })}
+          {!hotelReducer.isLoaded ? (
+            <Preloader />
+          ) : (
+            hotelReducer.hotels.map((e) => {
+              return (
+                <div className={c.item} key={e.hotelId}>
+                  <IoIosHome />
+                  <HotelItem
+                    name={e.name}
+                    id={e.hotelId}
+                    stars={e.stars}
+                    priceFrom={e.priceFrom}
+                    isFavorite={e.isFavorite}
+                    countDays={datesOfStay.countDays}
+                    date={today}
+                  />
+                </div>
+              );
+            })
+          )}
         </div>
       </div>
     </div>

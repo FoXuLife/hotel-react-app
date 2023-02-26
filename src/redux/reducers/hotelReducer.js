@@ -1,11 +1,11 @@
-import img1 from 'assets/img/image_part_001.jpg'
-import img2 from 'assets/img/image_part_002.jpg'
-import img3 from 'assets/img/image_part_003.jpg'
-import img4 from 'assets/img/image_part_004.jpg'
-import img5 from 'assets/img/image_part_005.jpg'
-import img6 from 'assets/img/image_part_006.jpg'
-import img7 from 'assets/img/image_part_007.jpg'
-import img8 from 'assets/img/image_part_008.jpg'
+import img1 from 'assets/img/image_part_001.webp'
+import img2 from 'assets/img/image_part_002.webp'
+import img3 from 'assets/img/image_part_003.webp'
+import img4 from 'assets/img/image_part_004.webp'
+import img5 from 'assets/img/image_part_005.webp'
+import img6 from 'assets/img/image_part_006.webp'
+import img7 from 'assets/img/image_part_007.webp'
+import img8 from 'assets/img/image_part_008.webp'
 
 import { sortHotelHelper } from "helpers/sortHotelsHelper";
 export const GET_HOTELS = 'hotel/GET-HOTELS';
@@ -14,6 +14,7 @@ const FOLLOW_HOTELS = 'hotel/FOLLOW-HOTELS';
 const GET_HOTELS_FAILED = 'hotel/GET_HOTELS-FAILED';
 const SORT_HOTELS = 'hotel/SORT-HOTELS'
 const CLEAR_FOLLOW_HOTELS = 'hotel/CLEAR-FOLLOW-HOTELS'
+const LOAD_PROGRESS = 'hotel/LOAD_PROGRESS'
 
 const init = {
     images: [
@@ -57,7 +58,8 @@ const init = {
     hotelsFavorite: [
 
     ],
-    errors: null
+    errors: null,
+    isLoaded: true
 }
 
 export const hotelReducer = (state = init, action) => {
@@ -70,7 +72,8 @@ export const hotelReducer = (state = init, action) => {
                         name: e.hotelName,
                         stars: e.stars,
                         priceFrom: e.priceFrom,
-                        isFavorite: state.hotelsFavorite.some(element => element.hotelId === e.hotelId) //проверка пришедших из API отелей
+                        isFavorite: state.hotelsFavorite.some(element => element.hotelId === e.hotelId),//проверка пришедших из API отелей
+
                     }
 
                 }), errors: null
@@ -91,12 +94,15 @@ export const hotelReducer = (state = init, action) => {
                 }), errors: null
             }
         case SORT_HOTELS: return {
-            ...state, hotelsFavorite: action.viewSort === 'priceFilter' ? sortHotelHelper(state.hotelsFavorite, 'priceFrom', action.number) : sortHotelHelper(state.hotelsFavorite, 'stars', action.number)
+            ...state, hotelsFavorite: action.viewSort === 'priceFilter' ? sortHotelHelper(state.hotelsFavorite, 'priceFrom', action.number) // Переписать в селекторы !
+             : sortHotelHelper(state.hotelsFavorite, 'stars', action.number)
         }
         case GET_HOTELS_FAILED:
             return { ...state, errors: action.errors }
         case CLEAR_FOLLOW_HOTELS:
             return { ...state, hotelsFavorite: [] }
+        case LOAD_PROGRESS:
+            return { ...state, isLoaded: action.isLoaded }
 
         default:
             return state
@@ -111,7 +117,6 @@ export const getHotelFailed = (payload) => {
     return { type: GET_HOTELS_FAILED, errors: payload }
 }
 export const sortHotel = (viewSort, number) => {
-    console.log(viewSort, number);
     return { type: SORT_HOTELS, viewSort, number }
 }
 export const setHotel = (hotels) => { // Для записи в int
@@ -123,5 +128,9 @@ export const followHotel = (hotelId, name, stars, priceFrom, date, countDays) =>
 export const clearFollowHotels = () => {
     return { type: CLEAR_FOLLOW_HOTELS }
 }
+export const loadProgressing = (isLoaded) => {
+    return { type: LOAD_PROGRESS, isLoaded }
+}
+
 
 
